@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa and Hotels</title>
+    <link rel="stylesheet" href="vah.css">
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+</head>
+<body>
+    <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!-- <label class="logo"></label> -->
+      <img src="./assets/img/logo.jpg" alt="" class="logo" />
+      <ul>
+        <li><a class="active" href="./index.html">Home</a></li>
+        <li><a href="./vah.html">Visa and Hotels</a></li>
+        <li><a href="./tourn.html">Tournament</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li id="app"><a href="./applications.html">Application</a></li>
+      </ul>
+    </nav>
+
+
+       <div class="scene">
+        <div class="card" id="card">
+            <img src="./assets/img/bookotrip-logo.svg" alt="" style="width: 50%;">
+            <h3  style="text-align: center;">BOOKOTRIP TRAVEL & TOURISM LLC.</h2>
+                <div class="container">
+                            <div class="col-1">
+            <div class="text" style="margin-left: 40px;font-size: larger;">Johan rajeev <br>
+               <span style="color: rgb(34, 34, 34); font-size: smaller;">  GENERAL MANAGER <span></span>
+
+            </div>
+
+            <div style="margin-left: 40px;">
+                               <br>
+               
+                ☎ +971 50 193 5720 <br>
+                ☏ +971 4 2559970 <br>
+               <span style="font-size: small;">  ✉ john.rajeev@bookotrip.ae </span>
+
+            </div>
+
+            </div>
+
+            <div class="col-2">
+               🌐 www.bookotrip.ae <br>
+               <br>
+               <span style="font-size: smaller;">
+               📍ㅤOffice No. 316, Entrance 5 <br>
+               &nbsp; ㅤ4th Floor, <br>
+               &nbsp;ㅤ Belhoul Group Building, <br>
+               &nbsp;ㅤ P.O Box 236 641, <br>
+               &nbsp;ㅤ Al Garhoud, Dubai, UAE 
+               </span>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+var imgUrl = "bgcard1.png"
+var card = document.getElementById("card");
+updateReflection(100,0)
+
+
+window.addEventListener("mousemove", (event)=>{
+    let mouseX = event.clientX
+    let mouseY = event.clientY
+    let halfWidth = window.innerWidth/2
+    let halfHeight = window.innerHeight/2 
+    let xdeg = (mouseX - halfWidth)/halfWidth;
+    let ydeg = (mouseY - halfHeight)/halfHeight;
+    updateReflection(ydeg * 180, xdeg * 100)
+    card.style.transform = `rotateX(${ydeg * 4}deg) rotateY(${xdeg * 4}deg)`;
+})
+
+window.ondevicemotion = function(event) {
+	var accelerationX = event.accelerationIncludingGravity.x;
+	var accelerationY = event.accelerationIncludingGravity.y;
+    var accelerationZ = event.accelerationIncludingGravity.z;
+    // console.log(`${accelerationX},${accelerationY},${accelerationZ}`)
+    let xdeg = accelerationX/10;
+    let ydeg = accelerationY/10;
+    updateReflection(ydeg * 180, xdeg * 100)
+    card.style.transform = `rotateX(${ydeg * 20}deg) rotateY(${xdeg * 20}deg)`;
+}
+
+
+function updateReflection(degree, percentage) {
+    card.style.background = `linear-gradient(${degree}deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) ${percentage}%, rgba(255, 255, 255, 0) 100%), url('${imgUrl}')`;
+    card.style.backgroundSize = "cover";
+}
+
+
+    </script>
+</body>
+</html>

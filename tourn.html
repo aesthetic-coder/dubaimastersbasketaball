@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament</title>
+    <link rel="stylesheet" href="tourn.css">
+</head>
+<body>
+  <div id="cursor"></div>
+    
+     <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!-- <label class="logo"></label> -->
+      <img src="./assets/img/logo.jpg" alt="" class="logo" />
+      <ul>
+        <li><a class="active" href="./index.html">Home</a></li>
+        <li><a href="./vah.html">Visa and Hotels</a></li>
+        <li><a href="./tourn.html">Tournament</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li id="app"><a href="./applications.html">Application</a></li>
+      </ul>
+    </nav>
+        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<p id="myText1">TOURNAMENT</p>
+
+<div class="p1">
+    <h2 class="fancy" style="--w: 50vw;--c: #e1c539;--b:4px;--g: 40px">Playing Jerseys</h2>
+    <br>
+    <p>The color of the playing dresses will be checked by the referees prior to each game. <br>
+         If the referees consider that the clothing of two teams is likely to cause confusion, <br> The team named
+second in the playing schedule shall change its clothing to ensure a good contrast.</p>
+    </div>
+<br>
+
+    <div class="p2">
+    <h2 class="fancy" style="--w: 50vw;--c: #2621b0;--b:4px;--g: 40px">Categories</h2>
+    <br>
+    <p>● &nbsp; Men 30+ (born 1994. and older) <br>
+● &nbsp; Men 40+ (born 1984. and older) <br>
+● &nbsp; Men 45+ (born 1979. and older) <br>
+● &nbsp; Men 50+ (bom 1974. and older) <br><br>
+● &nbsp; Women 30+ (born 1994. and older) <br>
+● &nbsp; Women 40+ (born 1984. and older) <br>
+● &nbsp; Women 45+ (born 1979. and older) <br>
+● &nbsp; Women 50+ (bom 1974. and older)</p>
+<br>
+    </div>
+
+    <div class="p1">
+    <h2 class="fancy" style="--w: 50vw;--c: #e1c539;--b:4px;--g: 40px;">Playing time (All Categories) </h2>
+    <br>
+    <p>
+        ● &nbsp; 4x10minutes, 2 last minutes of each half time is stooped when there is no play <br>
+● &nbsp; 1 team timeout in 1st half, 1 timeout in 2nd half <br>
+● &nbsp; Pauses between quarters 1 minute, halftime 2 minutes
+</p>
+
+<p style="width: 80vw; margin-left: 130px;">
+    In case of a draw during any game, additional 2 minute overtime is played with team
+timeouts only if they are left from regular time. <br>
+Time is stopped when there is no play during
+last minute of overtime. <br>
+<br>
+
+If an event occurs that is not foreseen by the rules of the competition or the valid rules of the
+basketball game of the competition under the competence of FIBA, the commissioner of the
+competition for referees in entitled to make a valid decision.
+</p>
+<br>
+    </div>
+
+      <div class="p1">
+    <h2 class="fancy" style="--w: 50vw;--c: #2621b0;--b:4px;--g: 40px">Players Accreditation</h2>
+    <br>
+    <p>The number of players to be put on the players’ list is max. 12 (+ 4 officials). <br>
+        It is obligatory
+that at least one official per team speaks English. <br>
+Only a player with an accreditation can be registered on the players’ list and consequently is
+eligible to participate in the matches. <br>
+One player can play only for one participating team. <br>
+In case of a missing health confirmation every player has to sign a Declaration (available at
+the accreditation desk).</p>
+<br>
+    </div>
+
+
+        <script>
+  // CURSOR
+
+(function() {
+    var mousePos;
+    var moved = false;
+
+    document.onmousemove = handleMouseMove;
+    setInterval(getMousePosition, 100);
+
+    function handleMouseMove(event) {
+        var dot, eventDoc, doc, body, pageX, pageY;
+      
+      moved = true;
+
+        event = event || window.event;
+        if (event.pageX == null && event.clientX != null) {
+            eventDoc = (event.target && event.target.ownerDocument) || document;
+            doc = eventDoc.documentElement;
+            body = eventDoc.body;
+
+            event.pageX = event.clientX +
+              (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+              (doc && doc.clientLeft || body && body.clientLeft || 0);
+            event.pageY = event.clientY +
+              (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+              (doc && doc.clientTop  || body && body.clientTop  || 0 );
+        }
+
+        mousePos = {
+            x: event.pageX,
+            y: event.pageY
+        };
+    }
+    function getMousePosition() {
+        var pos = mousePos;
+
+        if (!pos) {
+            // We haven't seen any movement yet
+        }
+        else if(moved === true) {
+            // Use pos.x and pos.y 
+             console.log("Pos:", pos.x, pos.y);
+          moved = false;
+          cursor = document.querySelector('#cursor');
+          cursor.style.left = (pos.x -5) + 'px' ;
+          cursor.style.top = (pos.y -5) + 'px';
+
+        }
+    }
+})();
+
+
+
+
+// HOVER ME
+
+$("li").hover(over, out);
+
+function over(){
+	TweenMax.to("#cursor", 0.2, {width:50, height:50, filter: "blur(9px)", borderColor:"rgba(255,255,0,0.5)", backgroundColor:"rgba(255,255,0,0.3)", ease: Power3.easeOut})
+	TweenMax.to(".yellow", .2, {opacity:1, y: -5})
+}
+
+function out(){
+	TweenMax.to("#cursor", 0.2, {width:35, height:35, filter: "blur(0px)", borderColor:"rgba(255,255,0,1)", backgroundColor:"rgba(255,255,0,0)", ease: Power3.easeOut})
+	TweenMax.to(".yellow", .2, {opacity:0, y: 0})
+}
+</script>
+</body>
+</html>

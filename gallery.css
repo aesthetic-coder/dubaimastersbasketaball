@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Droid Sans", sans-serif;
+  background-color: #000000;
+}
+
+.container {
+  background-color: #000000;
+  color: #35373a;
+  min-height: 100vh;
+  padding: 30px 50px;
+  margin-top: -30px;
+}
+
+.gallery-container h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.gallery-container p {
+  text-align: center;
+  margin: 25px auto;
+  font-size: 18px;
+  color: #999;
+}
+
+.tz-gallery {
+  padding: -10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -2px;
+}
+
+.col {
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.433);
+  margin: 4px;
+}
+
+.col-3 {
+  flex: 0 0 33.3333%;
+  max-width: 20.3333%;
+}
+
+.col-8 {
+  flex: 0 0 66.6666%;
+  max-width: 66.6666%;
+}
+
+.lightbox {
+  display: block;
+  position: relative;
+}
+
+.lightbox img {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Cover the area without stretching */
+}
+
+.lightbox:before,
+.lightbox:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  content: "";
+  transition: 0.4s;
+}
+
+.lightbox:before {
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  margin-left: -13px;
+  font-size: 26px;
+  color: #fff;
+  content: "";
+  font-family: "Glyphicons Halflings";
+  z-index: 9000;
+}
+
+.lightbox:after {
+  background-color: rgba(0, 0, 0, 0.363);
+}
+
+.lightbox:hover:before,
+.lightbox:hover:after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Stack images vertically */
+    align-items: center;
+  }
+
+  .col-3,
+  .col-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .lightbox img {
+    height: auto; /* Adjust height to maintain aspect ratio */
+  }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: 10% auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav {
+  font-family: "Poppins", sans-serif;
+  height: 80px;
+  width: 100%;
+  position: relative;
+  z-index: 1001; /* Ensure nav is above other content */
+}
+
+img.logo {
+  color: white;
+  width: 7vw;
+  line-height: 80px;
+  padding: 12px 50px;
+  font-weight: bold;
+}
+
+nav ul {
+  float: right;
+  align-items: center;
+  margin-right: 90px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 50px;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+a.active,
+a:hover {
+  background: #000000;
+  transition: 0.5s;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+#app {
+  border: 1px solid #ddd;
+  position: relative; /* Needed for positioning the pseudo-element */
+}
+
+#app::after {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute; /* Position relative to the #app element */
+  bottom: -1px; /* Adjust as needed to control the distance from the bottom */
+  right: -1px; /* Adjust as needed to control the distance from the right */
+  border-top: 20px solid transparent; /* Half of the desired cut size */
+  border-right: 20px solid #000000; /* Color of the cut */
+}
+
+@media (max-width: 952px) {
+  img.logo {
+    width: 20vw;
+    height: 9vh;
+    padding-left: 43%;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 858px) {
+  .checkbtn {
+    display: block;
+  }
+
+  nav ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #000000; /* Set background to black */
+    top: 90px;
+    left: -100%;
+    text-align: center;
+    transition: all 0.5s;
+    z-index: 1002; /* Ensure nav ul is above other content */
+  }
+
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    margin-right: 40px;
+    line-height: 30px;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  a:hover,
+  a.active {
+    background: none;
+    color: white;
+    text-decoration: underline;
+  }
+
+  #check:checked ~ ul {
+    left: 0;
+  }
+}
+
+
+#myText1 {
+  font-size: 90px;
+  color: #e1cb3a;
+  word-spacing: 2px; /* Adjust the word-spacing to reduce the gap */
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  animation-name: track-in-out;
+  animation-duration: 7s;
+  animation-iteration-count: 1;
+  text-decoration-style: wavy;
+}
+
+#cursor {
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 224);
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    z-index: 20;
+    pointer-events: none;
+}
